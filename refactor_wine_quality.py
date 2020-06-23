@@ -109,12 +109,11 @@ def column_mean(wine_quality,column_name):
             wine_quality.loc[i,column_name]='high'
         else:
             wine_quality.loc[i,column_name]='low'
-    print(wine_quality.groupby(column_name).quality.mean())
-column_mean(wine_quality,'citric_acid')
-
 
 # In[ ]:
-
+for feature in wine_quality.columns[:-1]:
+    column_mean(wine_quality, feature)
+    print(wine_quality.groupby(feature).quality.mean(), '\n')
 
 
 
